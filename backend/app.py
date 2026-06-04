@@ -10,7 +10,6 @@ from config import CORS_ORIGINS
 from utils import (
     EMP_LENGTH_OPTIONS,
     HOME_OWNERSHIP_OPTIONS,
-    PURPOSE_VALUES,
     build_pdf_report,
     get_artifacts,
     get_form_options,
@@ -86,9 +85,6 @@ def validate_form(payload: dict) -> tuple[dict | None, tuple | None]:
         }
     except (TypeError, ValueError):
         return None, (jsonify({"error": "Invalid numeric field values"}), 400)
-
-    if purpose not in PURPOSE_VALUES:
-        return None, (jsonify({"error": "Invalid purpose"}), 400)
 
     return form, None
 
